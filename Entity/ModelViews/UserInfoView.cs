@@ -7,18 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Web.Models //Entity.ModelViews
+namespace Entity.ModelViews
 {
     using System;
     using System.Collections.Generic;
     
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    public partial class CategoryView
+    public partial class UserInfoView
     {
-        public int CategoryId { get; set; }
-        public int CategoryTypeId { get; set; }
-        public string CategroyTitle { get; set; }
-        public int ParentId { get; set; }
+        public int UserId { get; set; }
+        public string UserName { get; set; }
+        public string UserPwd { get; set; }
+        public string RealName { get; set; }
+        public string UserTelphone { get; set; }
+        public string UserEmail { get; set; }
+        public bool UserIsLock { get; set; }
+        public System.DateTime UserAddTime { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Web.Models//Entity.ModelViews
+namespace Entity.MViews
 {
     using System;
     using System.Collections.Generic;

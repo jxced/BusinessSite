@@ -7,22 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Web.Models//Entity.ModelViews
+namespace Entity.MViews
 {
     using System;
     using System.Collections.Generic;
     
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    public partial class UserInfoView
+    public partial class ContentsView
     {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public int CategoryId { get; set; }
+        public string Content { get; set; }
+        public string Url { get; set; }
+        public string ImgUrl { get; set; }
         public int UserId { get; set; }
-        public string UserName { get; set; }
-        public string UserPwd { get; set; }
-        public string RealName { get; set; }
-        public string UserTelphone { get; set; }
-        public string UserEmail { get; set; }
-        public bool UserIsLock { get; set; }
-        public System.DateTime UserAddTime { get; set; }
+        public bool IsLock { get; set; }
+        public System.DateTime AddTime { get; set; }
+        public string exp1 { get; set; }
+        public Nullable<int> exp2 { get; set; }
     }
 }

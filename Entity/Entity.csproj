@@ -84,6 +84,39 @@
     <Compile Include="Menus.cs">
       <DependentUpon>KyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelViews\CategoryView.cs" />
+    <Compile Include="ModelViews\ContentsView.cs" />
+    <Compile Include="ModelViews\FeedbackView.cs" />
+    <Compile Include="ModelViews\MenusView.cs" />
+    <Compile Include="ModelViews\NewsView.cs" />
+    <Compile Include="ModelViews\ProductsView.cs" />
+    <Compile Include="ModelViews\UserInfoView.cs" />
+    <Compile Include="MViews\Category.cs">
+      <DependentUpon>KyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MViews\Contents.cs">
+      <DependentUpon>KyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MViews\Feedback.cs">
+      <DependentUpon>KyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MViews\KyModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MViews\Menus.cs">
+      <DependentUpon>KyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MViews\News.cs">
+      <DependentUpon>KyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MViews\Products.cs">
+      <DependentUpon>KyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MViews\UserInfo.cs">
+      <DependentUpon>KyModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="News.cs">
       <DependentUpon>KyModel.tt</DependentUpon>
     </Compile>
@@ -117,9 +150,14 @@
       <DependentUpon>KyModel.edmx</DependentUpon>
       <LastGenOutput>KyModel.cs</LastGenOutput>
     </Content>
+    <Content Include="MViews\KyModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>KyModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -158,18 +158,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\UserInfoesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CategoryView.cs" />
-    <Compile Include="Models\ContentsView.cs" />
-    <Compile Include="Models\FeedbackView.cs" />
-    <Compile Include="Models\MenusView.cs" />
-    <Compile Include="Models\NewsView.cs" />
-    <Compile Include="Models\ProductsView.cs" />
-    <Compile Include="Models\UserInfoView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -187,11 +181,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\UserInfoes\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\UserInfoes\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\UserInfoes\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\UserInfoes\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\UserInfoes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -220,11 +210,15 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\LoginOut.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Menus\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -254,6 +248,9 @@
       <Project>{0917d3b9-5d90-4db0-9ae9-7553bca4c248}</Project>
       <Name>IBLL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

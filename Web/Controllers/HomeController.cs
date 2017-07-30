@@ -36,5 +36,9 @@ namespace Web.Controllers
             UserInfo user= users.Where(c => c.UserName == "admin").FirstOrDefault();
             return View(user);
         }
+        public ActionResult LoginOut()
+        {
+            return View();
+        }
     }
 }
