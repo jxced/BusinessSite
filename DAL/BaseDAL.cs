@@ -80,7 +80,7 @@ namespace DAL
             }
             db.Configuration.ValidateOnSaveEnabled = false;
           DbEntityEntry obj=  db.Entry(entity);
-            obj.State = System.Data.EntityState.Unchanged;
+            obj.State =EntityState.Unchanged;
             
             foreach (string field in fields)
             {

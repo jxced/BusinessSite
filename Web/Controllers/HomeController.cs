@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Entity;
+using AbsFactory;
+using IBLL;
 
 namespace Web.Controllers
 {
@@ -28,7 +31,10 @@ namespace Web.Controllers
         }
         public ActionResult Login()
         {
-            return View();
+            AFactory aFactory = AFactory.CreateBLLFactory();
+            IUserInfoBLL users = aFactory.CreateUserInfoBLLInstance();
+            UserInfo user= users.Where(c => c.UserName == "admin").FirstOrDefault();
+            return View(user);
         }
     }
 }
