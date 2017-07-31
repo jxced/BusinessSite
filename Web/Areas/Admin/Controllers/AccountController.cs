@@ -6,14 +6,11 @@ using System.Web.Mvc;
 
 namespace Web.Areas.Admin.Controllers
 {
-    public class LoginController : BaseController
+    public class AccountController : BaseController
     {
-        // GET: Admin/Login
-
-       [HttpPost]
+        // GET: Admin/Account
         public ActionResult Login()
         {
-            base.UserInfoBLL.Where();
             return View();
         }
     }
