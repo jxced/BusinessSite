@@ -13,7 +13,16 @@ namespace CommonLib
                 
             });
             return Mapper.Map<TEntityView>(entity);
-            
+        }
+        public static TEntity EntityMap(TEntityView entityView)
+        {
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddConditionalObjectMapper();
+                // Configuration code
+
+            });
+            return Mapper.Map<TEntity>(entityView);
         }
     }
 }

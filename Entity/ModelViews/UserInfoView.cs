@@ -17,7 +17,11 @@ namespace Entity.ModelViews
     public partial class UserInfoView
     {
         public int UserId { get; set; }
+        [DisplayName("用户名")]
+        [Required(ErrorMessage ="用户名不能为空")]
         public string UserName { get; set; }
+        [DisplayName("密   码")]
+        [Required(ErrorMessage = "密码不能为空")]
         public string UserPwd { get; set; }
         public string RealName { get; set; }
         public string UserTelphone { get; set; }
