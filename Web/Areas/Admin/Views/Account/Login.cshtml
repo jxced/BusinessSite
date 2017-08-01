@@ -22,20 +22,20 @@
         <section class="content-wrapper main-content clear-fix">
             <section id="loginForm">
                 <h2>使用本地帐户登录。</h2>
-                <form action="~/Admin/Account/Login" method="post">
+                <form @*action="~/Admin/Account/Login"*@ method="post">
                     @Html.AntiForgeryToken()
                     <fieldset>
                         <legend>登录你的帐户</legend>
                         <ol>
                             <li class="email">
                                 @Html.LabelFor(model => model.UserName)
-                                @Html.TextBoxFor(model => model.UserName)
+                                @Html.TextBoxFor(model => model.UserName,new {value=ViewBag.name })
                                 @* 将任何用户名验证错误写入此页 *@
                                 @Html.ValidationMessageFor(model => model.UserName)
                             </li>
                             <li class="password">
                                 @Html.LabelFor(model => model.UserPwd)
-                                @Html.TextBoxFor(model => model.UserPwd)
+                                @Html.PasswordFor(model => model.UserPwd)
                                 @* 将任何密码验证错误写入此页 *@
                                 @Html.ValidationMessageFor(model => model.UserPwd)
                             </li>

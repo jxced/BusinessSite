@@ -21,6 +21,11 @@ namespace Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(FormCollection form)
         {
+            if (ModelState.IsValid)
+            {
+
+            }
+            ViewBag.name = form["UserName"];
             return View();
         }
         public ActionResult LoginOut()

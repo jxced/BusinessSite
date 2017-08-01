@@ -22,6 +22,7 @@ namespace Entity.ModelViews
         public string UserName { get; set; }
         [DisplayName("密   码")]
         [Required(ErrorMessage = "密码不能为空")]
+        [MinLength(6,ErrorMessage ="密码长度必须大于等于6")]
         public string UserPwd { get; set; }
         public string RealName { get; set; }
         public string UserTelphone { get; set; }
