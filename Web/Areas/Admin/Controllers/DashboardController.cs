@@ -17,7 +17,7 @@ namespace Web.Areas.Admin.Controllers
         public ActionResult Menus()
         {
             
-            base.MenusBLL.Where(c => c.MenusStatus == ((int)Enums.EStatus.normal == 0 ? false : true));
+            List<Menus> menus= base.MenusBLL.Where(c => c.MenusStatus == ((int)Enums.EStatus.normal == 0 ? false : true));
             return PartialView();
         }
     }
