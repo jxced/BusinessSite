@@ -63,6 +63,7 @@
     <Compile Include="Contents.cs">
       <DependentUpon>KyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Enums.cs" />
     <Compile Include="Feedback.cs">
       <DependentUpon>KyModel.tt</DependentUpon>
     </Compile>
