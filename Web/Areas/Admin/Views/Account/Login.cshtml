@@ -23,7 +23,7 @@
             <section id="loginForm">
                 <h2>使用本地帐户登录。</h2>
                 <form @*action="~/Admin/Account/Login"*@ method="post">
-                    @*@Html.AntiForgeryToken()*@
+                    @Html.AntiForgeryToken()
                     <fieldset>
                         <legend>登录你的帐户</legend>
                         <ol>

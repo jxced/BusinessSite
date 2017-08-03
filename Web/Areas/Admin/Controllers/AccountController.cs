@@ -13,17 +13,22 @@ namespace Web.Areas.Admin.Controllers
     {
        public ActionResult Login()
         {
-            ViewBag.name ="用户名";
+            
             //AutoEntityMap<UserInfo,UserInfoView>.EntityMap()
             return View();
         }
         [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public ActionResult Login(FormCollection form)
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(UserInfoView entityView)
         {
             if (ModelState.IsValid)
             {
-
+               UserInfo entity= AutoEntityMap<UserInfoView, UserInfo>.EntityMap(entityView);
+                bool b= UserInfoBLL.Where(c =>c.UserName== entity.UserName && c.UserPwd == entity.UserPwd).Any();
+                if (b)
+                {
+                    return RedirectToAction("Index", "Dashboar");
+                }
             }
             
             return View();
