@@ -24,7 +24,8 @@ namespace Web.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                UserInfo entity= AutoEntityMap<UserInfoView, UserInfo>.EntityMap(entityView);
-                bool b= UserInfoBLL.Where(c =>c.UserName== entity.UserName && c.UserPwd == entity.UserPwd).Any();
+                string pwd= Kits.GetMD5(entity.UserPwd);
+                bool b= UserInfoBLL.Where(c =>c.UserName== entity.UserName && c.UserPwd == pwd).Any();
                 if (b)
                 {
                     return RedirectToAction("Index", "Dashboar");

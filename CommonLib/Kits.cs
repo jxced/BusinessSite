@@ -24,7 +24,7 @@ namespace CommonLib
 
                 for (int i = 0; i < data.Length; i++)
                 {
-                    sb.Append(data[i].ToString());
+                    sb.Append(data[i].ToString("x2"));
                 }
             }
             return sb.ToString().Replace("-", "");
