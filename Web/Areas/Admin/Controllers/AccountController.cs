@@ -13,19 +13,19 @@ namespace Web.Areas.Admin.Controllers
     {
        public ActionResult Login()
         {
-
+            ViewBag.name ="用户名";
             //AutoEntityMap<UserInfo,UserInfoView>.EntityMap()
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Login(FormCollection form)
         {
             if (ModelState.IsValid)
             {
 
             }
-            ViewBag.name = form["UserName"];
+            
             return View();
         }
         public ActionResult LoginOut()

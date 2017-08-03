@@ -23,13 +23,13 @@
             <section id="loginForm">
                 <h2>使用本地帐户登录。</h2>
                 <form @*action="~/Admin/Account/Login"*@ method="post">
-                    @Html.AntiForgeryToken()
+                    @*@Html.AntiForgeryToken()*@
                     <fieldset>
                         <legend>登录你的帐户</legend>
                         <ol>
                             <li class="email">
                                 @Html.LabelFor(model => model.UserName)
-                                @Html.TextBoxFor(model => model.UserName,new {value=ViewBag.name })
+                                @Html.TextBoxFor(model => model.UserName,new { alt="用户名"})
                                 @* 将任何用户名验证错误写入此页 *@
                                 @Html.ValidationMessageFor(model => model.UserName)
                             </li>
@@ -43,7 +43,7 @@
 
                             </li>
                             <li class="remember-me">
-                                @Html.CheckBox("renmenberMe", false, new { id = "rememberMe", value = "true" })
+                                @Html.CheckBox("renmenberMe", false, new { id = "rememberMe", value = "" })
                                 <label class="checkbox" for="rememberMe">记住我?</label>
                             </li>
                         </ol>
