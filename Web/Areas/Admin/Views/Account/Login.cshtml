@@ -1,5 +1,5 @@
 ﻿@model Entity.ModelViews.UserInfoView
-
+@using CommonLib;
 @{
     Layout = null;
     string VCode = string.Empty;
@@ -26,6 +26,7 @@
                     @Html.AntiForgeryToken()
                     <fieldset>
                         <legend>登录你的帐户</legend>
+                        @Html.ValidationSummary(true)
                         <ol>
                             <li class="email">
                                 @Html.LabelFor(model => model.UserName)

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using AbsFactory;
 using IBLL;
+using System.Data.Entity;
 
 namespace Web.Areas.Admin.Controllers
 {
