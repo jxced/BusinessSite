@@ -1,9 +1,8 @@
-﻿@model Entity.Menus
+﻿@model  IEnumerable<Entity.Menus>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "后台管理";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
+@*@Html.Partial("Menus",Model)*@
 

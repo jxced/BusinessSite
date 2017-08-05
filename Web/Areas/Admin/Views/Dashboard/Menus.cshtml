@@ -1,27 +1,32 @@
 ﻿@model IEnumerable<Entity.Menus>
 @using Entity
-<ul>
-    @if (Model.Any())
-    {
-        foreach (var item in Model)
+<div >
+    <ul>
+        @if (Model.Any())
         {
-            if (item.MenusParentId == -1)
+            foreach (var item in Model)
             {
-                <li>
-                    <span>@item.MenusName</span>
-                    <ul>
-                        @foreach (var subitem in Model)
+                if (item.MenusParentId == -1)
+                {
+                    <li>
+                        <span>@item.MenusName</span>
+                        <span class="arrow"></span>
+                        <ul >
+                            @foreach (var subitem in Model)
                         {
                             if (subitem.MenusParentId == item.MenusId)
                             {
-                                <li>
-                                    <a href="@subitem.MenusUrl"><sapn>@subitem.MenusName</sapn></a>
-                                </li>
+                                    <li>
+                                        <a href="@subitem.MenusUrl"><sapn>@subitem.MenusName</sapn></a>
+                                    </li>
+                                }
                             }
-                        }
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
+                }
             }
         }
-    }
-</ul>
+    </ul>
+</div>
+
+
