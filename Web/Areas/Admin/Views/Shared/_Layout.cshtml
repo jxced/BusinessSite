@@ -1,31 +1,49 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 应用程序</title>
-    <script src="~/Scripts/jquery-3.1.1.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/Scripts/bootstrap-tree.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>@ViewBag.Title</title>
+
+    <!-- Bootstrap -->
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-tree.css" rel="stylesheet" />
-    <script>
-        
-    </script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="~/Scripts/html5shiv.min.js"></script>
+      <script src="~/Scripts/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-    <div  class="tree">
-        <ul>
-            <li><span>主页董师傅</span>
-                <ul>
-                    <li>
-                        <span>个人顶顶顶顶顶</span>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+    <div class="container">
+        <div>
+            <div class="col-xs-1">左边</div>
+            <div class="col-lg-3">右边</div>
+        </div>
+        <div class="admin-sidebar am-offcanvas" id="am-navbar-qrcode">
+            <div class="am-offcanvas-bar am-offcanvas-bar"></div>
+            <ul class="am-list">
+                <li class="am-parent">
+                    主页
+                    <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+                        <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 个人资料<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+                        <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
+                        <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 相册页面<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
+                        <li><a href="admin-log.html"><span class="am-icon-calendar"></span> 系统日志</a></li>
+                        <li><a href="admin-404.html"><span class="am-icon-bug"></span> 404</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        @RenderBody()
     </div>
-    @RenderBody()
+   
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.js"></script>
 </body>
 </html>
