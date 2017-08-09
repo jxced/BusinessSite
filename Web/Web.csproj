@@ -164,6 +164,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CheckLoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserInfoesController.cs" />
@@ -290,6 +291,45 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="html\template\assets\css\admin.css" />
+    <Content Include="html\template\assets\css\amazeui.css" />
+    <Content Include="html\template\assets\css\amazeui.jqgrid.min.css" />
+    <Content Include="html\template\assets\css\component.css" />
+    <Content Include="html\template\assets\css\core.css" />
+    <Content Include="html\template\assets\css\font-awesome.css" />
+    <Content Include="html\template\assets\css\index.css" />
+    <Content Include="html\template\assets\css\menu.css" />
+    <Content Include="html\template\assets\css\page\form.css" />
+    <Content Include="html\template\assets\css\page\typography.css" />
+    <Content Include="html\template\assets\img\avatar-1.jpg" />
+    <Content Include="html\template\assets\img\avatar-10.jpg" />
+    <Content Include="html\template\assets\img\avatar-2.jpg" />
+    <Content Include="html\template\assets\img\avatar-3.jpg" />
+    <Content Include="html\template\assets\img\avatar-4.jpg" />
+    <Content Include="html\template\assets\img\avatar-5.jpg" />
+    <Content Include="html\template\assets\img\bg1.jpg" />
+    <Content Include="html\template\assets\img\inform.png" />
+    <Content Include="html\template\assets\img\rember.png" />
+    <Content Include="html\template\assets\img\search.png" />
+    <Content Include="html\template\assets\js\amazeui.min.js" />
+    <Content Include="html\template\assets\js\app.js" />
+    <Content Include="html\template\assets\js\blockUI.js" />
+    <Content Include="html\template\assets\js\charts\columnarChart.js" />
+    <Content Include="html\template\assets\js\charts\echarts.min.js" />
+    <Content Include="html\template\assets\js\charts\indexChart.js" />
+    <Content Include="html\template\assets\js\charts\lineChart.js" />
+    <Content Include="html\template\assets\js\charts\pieChart.js" />
+    <Content Include="html\template\assets\js\jquery-2.1.0.js" />
+    <Content Include="html\template\html\chart_columnar.html" />
+    <Content Include="html\template\html\chart_line.html" />
+    <Content Include="html\template\html\chart_pie.html" />
+    <Content Include="html\template\html\form_basic.html" />
+    <Content Include="html\template\html\form_validate.html" />
+    <Content Include="html\template\html\login.html" />
+    <Content Include="html\template\html\table_basic.html" />
+    <Content Include="html\template\html\table_complete.html" />
+    <Content Include="html\template\html\typography.html" />
+    <Content Include="html\template\index.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\custom\amazeui.js" />
@@ -309,6 +349,13 @@
     <Content Include="html\AmazeUI\assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="html\AmazeUI\assets\fonts\FontAwesome.otf" />
     <Content Include="html\AmazeUI\assets\js\jquery.min.map" />
+    <Content Include="html\template\.project" />
+    <Content Include="html\template\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="html\template\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="html\template\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="html\template\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="html\template\assets\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\Views\Dashboard\Content.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\html5shiv-printshiv.js" />
     <Content Include="Scripts\html5shiv-printshiv.min.js" />
@@ -362,6 +409,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\CheckLogin\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

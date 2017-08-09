@@ -21,20 +21,10 @@ namespace Web.Areas.Admin.Controllers
             //base.MenusBLL.DbSet.Where(c => c.MenusStatus == ((int)Enums.EStatus.normal == 0 ? false : true)).OrderBy(c => c.MenusSortId).ToList();
             return PartialView();
         }
-        //void GetMenu(List<Menus> menu)
-        //{
-        //    System.Text.StringBuilder sb = new System.Text.StringBuilder();
-        //    if (menu.Count>0)
-        //    {
-        //        foreach (var item in menu)
-        //        {
-        //            if (item.MenusParentId == -1)
-        //            {
-        //                sb.AppendLine("<li>" + "</li>");
-        //            }
-        //    }
-        //    }
-            
-        //}
+        public ActionResult Content()
+        {
+
+            return PartialView();
+        }
     }
 }

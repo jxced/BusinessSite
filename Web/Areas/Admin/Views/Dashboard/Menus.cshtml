@@ -1,32 +1,35 @@
 ﻿@model IEnumerable<Entity.Menus>
 @using Entity
-<div >
-    <ul>
-        @if (Model.Any())
-        {
-            foreach (var item in Model)
+<div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+    <div class="am-offcanvas-bar admin-offcanvas-bar">
+        <ul class="am-list admin-sidebar-list">
+            @if (Model.Any())
             {
-                if (item.MenusParentId == -1)
+                int i = 1;
+               
+                foreach (var item in Model)
                 {
-                    <li>
-                        <span>@item.MenusName</span>
-                        
-                        <ul >
-                            @foreach (var subitem in Model)
-                        {
-                            if (subitem.MenusParentId == item.MenusId)
-                            {
-                                    <li>
-                                        <a href="@subitem.MenusUrl"><sapn>@subitem.MenusName</sapn></a>
-                                    </li>
+                    if (item.MenusParentId == -1)
+                    {
+                        string s = "#collapse-nav" + i;
+                        <li class="admin-parent">
+                            <a class="am-cf" data-am-collapse="{target: '@s'}"><span class="am-icon-file"></span> @item.MenusName <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                            <ul class="am-list am-collapse admin-sidebar-sub am-in" id="@s">
+                                @foreach (var itemSub in Model)
+                                {
+                                    if (itemSub.MenusParentId == item.MenusId)
+                                    {
+                                        <li><a href="@itemSub.MenusUrl"><span class="am-icon-puzzle-piece"></span> @itemSub.MenusName</a></li>
+                                    }
                                 }
-                            }
-                        </ul>
-                    </li>
-                }
-            }
-        }
-    </ul>
+                            </ul>
+                        </li>
+                        i++;
+                    }    // if item.MenusParentId == -1 end
+                }  //first foreach end
+            }  
+        </ul>
+    </div>
 </div>
 
 

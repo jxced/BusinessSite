@@ -8,8 +8,9 @@
     <title>@ViewBag.Title</title>
 
     <!-- Bootstrap -->
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-
+    <link href="~/html/AmazeUI/assets/css/amazeui.css" rel="stylesheet" />
+    <link href="~/html/AmazeUI/assets/css/admin.css" rel="stylesheet" />
+    <link href="~/html/AmazeUI/assets/css/app.css" rel="stylesheet" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -18,32 +19,44 @@
     <![endif]-->
 </head>
 <body>
-    <div class="container">
-        <div>
-            <div class="col-xs-1">左边</div>
-            <div class="col-lg-3">右边</div>
+    <header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+            <strong>Amaze UI</strong> <small>后台管理模板</small>
         </div>
-        <div class="admin-sidebar am-offcanvas" id="am-navbar-qrcode">
-            <div class="am-offcanvas-bar am-offcanvas-bar"></div>
-            <ul class="am-list">
-                <li class="am-parent">
-                    主页
-                    <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
-                        <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 个人资料<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
-                        <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
-                        <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 相册页面<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
-                        <li><a href="admin-log.html"><span class="am-icon-calendar"></span> 系统日志</a></li>
-                        <li><a href="admin-404.html"><span class="am-icon-bug"></span> 404</a></li>
+
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+                <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
+                <li class="am-dropdown" data-am-dropdown>
+                    <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                        <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
+                    </a>
+                    <ul class="am-dropdown-content">
+                        <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
+                        <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+                        <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
                     </ul>
                 </li>
+                <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
             </ul>
         </div>
-        @RenderBody()
+    </header>
+
+    <div class="am-cf admin-main">
+        <!-- sidebar start -->
+   @RenderBody()
     </div>
-   
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="~/Scripts/jquery-3.1.1.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="~/Scripts/bootstrap.js"></script>
+        <!-- sidebar end -->
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        @*<script src="~/Scripts/jquery-3.1.1.js"></script>*@
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        @*<script src="~/Scripts/bootstrap.js"></script>*@
+        <script src="~/html/AmazeUI/assets/js/jquery.min.js"></script>
+        <script src="~/html/AmazeUI/assets/js/amazeui.js"></script>
+        <script src="~/html/AmazeUI/assets/js/app.js"></script>
 </body>
 </html>
