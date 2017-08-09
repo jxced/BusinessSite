@@ -10,7 +10,7 @@ namespace Web.Areas.Admin.Controllers
     {
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            filterContext.
+            filterContext.Result=new 
             base.OnActionExecuting(filterContext);
         }
     }
