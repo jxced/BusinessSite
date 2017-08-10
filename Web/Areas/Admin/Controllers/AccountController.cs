@@ -6,12 +6,13 @@ using System.Web.Mvc;
 
 namespace Web.Areas.Admin.Controllers
 {
-    public class AccountController : BaseController
+    public class AccountController : CheckLoginController
     {
         /// <summary>
         /// 登陆
         /// </summary>
         /// <returns></returns>
+        [HttpGet,SkipLogin]
         public ActionResult Login()
         {
             //AutoEntityMap<UserInfo,UserInfoView>.EntityMap()
@@ -23,7 +24,7 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="entityView">用户信息实体视图</param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost,SkipLogin]
         [ValidateAntiForgeryToken]
         public ActionResult Login(UserInfoView entityView)
         {
@@ -34,7 +35,7 @@ namespace Web.Areas.Admin.Controllers
                 bool b = UserInfoBLL.Where(c => c.UserName == entity.UserName && c.UserPwd == pwd).Any();
                 if (b)
                 {
-                    Session["userInfo"] = entity.UserName;
+                    Session[Keys.SessionKey] = entity.UserName;
                     return RedirectToAction("Index", "Dashboard");
                 }
             }
@@ -46,9 +47,11 @@ namespace Web.Areas.Admin.Controllers
         /// 登出
         /// </summary>
         /// <returns></returns>
+        [SkipLogin]
         public ActionResult LoginOut()
         {
-            return View();
+            Session[Keys.SessionKey] = null;
+            return Redirect("/Admin/Account/Login");
         }
     }
 }

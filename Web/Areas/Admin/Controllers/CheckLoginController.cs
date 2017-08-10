@@ -11,9 +11,15 @@ namespace Web.Areas.Admin.Controllers
     {
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (Session[Keys.SessionKey]==null)
+            Type skipLoginT = typeof(SkipLogin);
+            bool IsSkip= filterContext.ActionDescriptor.IsDefined(skipLoginT,false);
+            if (!IsSkip)
             {
-                filterContext.Result = new RedirectResult("/Admin/Account/Login");
+                if (Session[Keys.SessionKey] == null)
+                {
+                    filterContext.Result = new RedirectResult("/Admin/Account/Login");
+                }
+                
             }
             base.OnActionExecuting(filterContext);
         }
