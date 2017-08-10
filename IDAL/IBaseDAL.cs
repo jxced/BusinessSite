@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace IDAL
 {
-    public interface IBaseDAL<TEntity>where TEntity:class
+    public interface IBaseDAL<TEntity> where TEntity : class
     {
         DbSet<TEntity> DbSet { get; }
 
@@ -30,13 +30,11 @@ namespace IDAL
         /// <returns></returns>
         List<TEntity> Where(Expression<Func<TEntity, bool>> predicate, string[] Tables);
 
-
         /// <summary>
         /// 新增
         /// </summary>
         /// <param name="entity"></param>
         void Add(TEntity entity);
-
 
         /// <summary>
         /// 修改
@@ -53,12 +51,10 @@ namespace IDAL
         /// <param name="isInContext"></param>
         void Del(TEntity entity, bool isInContext);
 
-
         /// <summary>
         /// 保存EF容器操作
         /// </summary>
         /// <returns></returns>
         int SaveChanges();
-        
     }
 }

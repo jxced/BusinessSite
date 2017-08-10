@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IBLL
 {
-    public interface IBaseBLL<TEntity>where TEntity:class
+    public interface IBaseBLL<TEntity> where TEntity : class
     {
         DbSet<TEntity> DbSet { get; }
 
@@ -59,6 +56,5 @@ namespace IBLL
         /// </summary>
         /// <returns></returns>
         int SaveChanges();
-        
     }
 }

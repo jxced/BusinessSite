@@ -16,8 +16,6 @@
     width: 83.33333333%;
 }
 
-
-
 #doc-ta-1,#doc-ds-ipt-1,#doc-select-1{
     border: 1px solid #E3E3E3;
     border-radius: 4px;
@@ -49,11 +47,7 @@
 	#doc-ipt-pwd-1,#doc-ta-1,#doc-ds-ipt-1,#doc-select-1{
 		width: 100%;
 	}
-	
-
 }
-
-
 
 /*----------------------登录-----------------------*/
 .account-pages {
@@ -91,4 +85,3 @@
 	width: 15px;
 	height: 15px;
 }
-

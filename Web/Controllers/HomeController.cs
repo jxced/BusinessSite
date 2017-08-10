@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using AbsFactory;
 using Entity;
-using AbsFactory;
 using IBLL;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace Web.Controllers
 {
@@ -29,13 +26,15 @@ namespace Web.Controllers
 
             return View();
         }
+
         public ActionResult Login()
         {
             AFactory aFactory = AFactory.CreateBLLFactory();
             IUserInfoBLL users = aFactory.CreateUserInfoBLLInstance();
-            UserInfo user= users.Where(c => c.UserName == "admin").FirstOrDefault();
+            UserInfo user = users.Where(c => c.UserName == "admin").FirstOrDefault();
             return View(user);
         }
+
         public ActionResult LoginOut()
         {
             return View();

@@ -12,7 +12,6 @@
     position: relative;
     width: 290px;
     z-index: 1;
-   
 }
 
 .am-navbar-left{
@@ -104,16 +103,12 @@
 	width: 100%;
     /*position: relative;*/
     height: 100%;
-  
 }
 
 .admin .am-g{
 	padding-left: 0;
 	padding-right: 0;
 }
-
-
-
 
 /*--------Left Sidebar Start----------*/
 /*---user---*/
@@ -204,8 +199,6 @@ a:hover {
     text-decoration: none;
 }
 
-
-
 /*---Sidemenu---*/
 #sidebar-menu {
     padding-bottom: 30px;
@@ -221,7 +214,6 @@ a:hover {
     position: relative;
     text-decoration: none;
 }
-
 
 #sidebar-menu, #sidebar-menu ul, #sidebar-menu li, #sidebar-menu a {
     border: 0;
@@ -289,16 +281,12 @@ a:hover {
     line-height: 48px;
 }
 
-
-
-
 /*---right Content here---*/
 .content-page {
     overflow: auto;
     /*height: 700px;*/
     margin-top: 30px;
   /*  padding-left: 260px;*/
- 
 }
 
 .content-page .content {
@@ -313,10 +301,6 @@ a:hover {
     margin-left: auto;
 }
 
-
-
-
-
 @media screen and (max-width: 641px) { /*当屏幕尺寸小于600px时，应用下面的CSS样式*/
   .am-topbar{
   	background: #fff;
@@ -324,18 +308,15 @@ a:hover {
   .content-page{
   	/*padding-left: 15px;*/
   }
-  
+
   .page-title{
   	margin-left: 20px;
   }
-  
 }
-
 
 .contain{
 	overflow: hidden;
 }
-
 
 /*--navbar--*/
 .admin-menu {
@@ -360,4 +341,3 @@ a:hover {
 	flex: 1;
 	-webkit-flex: 1;
 }
-

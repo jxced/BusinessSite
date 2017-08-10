@@ -3,7 +3,7 @@
 @{
     Layout = null;
     string VCode = string.Empty;
-    
+
 }
 
 <!DOCTYPE html>
@@ -41,7 +41,6 @@
                                 @Html.ValidationMessageFor(model => model.UserPwd)
                             </li>
                             <li class="VCode">
-
                             </li>
                             <li class="remember-me">
                                 @Html.CheckBox("renmenberMe", false, new { id = "rememberMe", value = "" })
@@ -60,7 +59,6 @@
             <section class="social" id="socialLoginForm">
                 <h2>使用其他服务登录.</h2>
                 @*@RenderPage("/Admin/Account/Login")*@
-
             </section>
         </section>
 </div>

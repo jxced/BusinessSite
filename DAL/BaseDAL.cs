@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace DAL
 {
-    public class BaseDAL<TEntity>:IBaseDAL<TEntity> where TEntity:class
+    public class BaseDAL<TEntity> : IBaseDAL<TEntity> where TEntity : class
     {
         private BaseDBContext db = new BaseDBContext();
         private DbSet<TEntity> _dbSet;
@@ -17,7 +17,8 @@ namespace DAL
         {
             _dbSet = db.Set<TEntity>();
         }
-        public DbSet<TEntity> DbSet { get => _dbSet;}
+
+        public DbSet<TEntity> DbSet { get => _dbSet; }
 
         /// <summary>
         /// 查询表所有数据
@@ -44,14 +45,14 @@ namespace DAL
         /// <param name="predicate">查询条件参数，以lambda方式</param>
         /// <param name="Tables">联表参数</param>
         /// <returns></returns>
-        public List<TEntity>Where(Expression<Func<TEntity, bool>> predicate, string[] Tables)
+        public List<TEntity> Where(Expression<Func<TEntity, bool>> predicate, string[] Tables)
         {
             DbQuery<TEntity> results = _dbSet;
-            if (Tables!=null&&Tables.Length>0)
+            if (Tables != null && Tables.Length > 0)
             {
                 foreach (string table in Tables)
                 {
-                    results= results.Include(table);
+                    results = results.Include(table);
                 }
             }
             return results.Where(predicate).ToList();
@@ -72,30 +73,31 @@ namespace DAL
         /// <param name="entity">要修改的实体</param>
         /// <param name="fields">要修改的字段</param>
         /// <returns></returns>
-        public int Update(TEntity entity,string[]fields)
+        public int Update(TEntity entity, string[] fields)
         {
-            if (fields.Length==0&&fields==null)
+            if (fields.Length == 0 && fields == null)
             {
                 return 0;
             }
             db.Configuration.ValidateOnSaveEnabled = false;
-          DbEntityEntry obj=  db.Entry(entity);
-            obj.State =EntityState.Unchanged;
-            
+            DbEntityEntry obj = db.Entry(entity);
+            obj.State = EntityState.Unchanged;
+
             foreach (string field in fields)
             {
-                obj.Property(field).IsModified=true;
+                obj.Property(field).IsModified = true;
             }
             return 1;
         }
+
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="isInContext"></param>
-        public void Del(TEntity entity,bool isInContext)
+        public void Del(TEntity entity, bool isInContext)
         {
-            if (isInContext==false)
+            if (isInContext == false)
             {
                 _dbSet.Attach(entity);
             }

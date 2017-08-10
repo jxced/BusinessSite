@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using CommonLib;
+﻿using CommonLib;
 using Entity;
 using Entity.ModelViews;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace Web.Areas.Admin.Controllers
 {
@@ -15,9 +12,8 @@ namespace Web.Areas.Admin.Controllers
         /// 登陆
         /// </summary>
         /// <returns></returns>
-       public ActionResult Login()
+        public ActionResult Login()
         {
-            
             //AutoEntityMap<UserInfo,UserInfoView>.EntityMap()
             return View();
         }
@@ -33,11 +29,12 @@ namespace Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-               UserInfo entity= AutoEntityMap<UserInfoView, UserInfo>.EntityMap(entityView);
-                string pwd= Kits.GetMD5(entity.UserPwd);
-                bool b= UserInfoBLL.Where(c =>c.UserName== entity.UserName && c.UserPwd == pwd).Any();
+                UserInfo entity = AutoEntityMap<UserInfoView, UserInfo>.EntityMap(entityView);
+                string pwd = Kits.GetMD5(entity.UserPwd);
+                bool b = UserInfoBLL.Where(c => c.UserName == entity.UserName && c.UserPwd == pwd).Any();
                 if (b)
                 {
+                    Session["userInfo"] = entity.UserName;
                     return RedirectToAction("Index", "Dashboard");
                 }
             }

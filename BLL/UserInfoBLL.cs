@@ -3,7 +3,7 @@ using IBLL;
 
 namespace BLL
 {
-    public class UserInfoBLL:BaseBLL<UserInfo>, IUserInfoBLL
+    public class UserInfoBLL : BaseBLL<UserInfo>, IUserInfoBLL
     {
     }
 }

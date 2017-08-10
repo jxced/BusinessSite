@@ -1,14 +1,9 @@
 ﻿using Entity;
 using IBLL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class NewsBLL:BaseBLL<News>, INewsBLL
+    public class NewsBLL : BaseBLL<News>, INewsBLL
     {
     }
 }

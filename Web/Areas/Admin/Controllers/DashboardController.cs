@@ -1,13 +1,11 @@
-﻿using System;
+﻿using Entity;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Entity;
 
 namespace Web.Areas.Admin.Controllers
 {
-    public class DashboardController : BaseController
+    public class DashboardController :CheckLoginController
     {
         // GET: Admin/Dashboard
         public ActionResult Index()
@@ -15,15 +13,16 @@ namespace Web.Areas.Admin.Controllers
             List<Menus> menus = base.MenusBLL.Where(c => c.MenusStatus == ((int)Enums.EStatus.normal == 0 ? false : true)).OrderBy(c => c.MenusSortId).ToList();
             return View(menus);
         }
+
         public ActionResult Menus()
         {
-           // List<Menus> menus= base.MenusBLL.Where(c => c.MenusStatus == ((int)Enums.EStatus.normal == 0 ? false : true)).OrderBy(c=>c.MenusSortId).ToList();
+            // List<Menus> menus= base.MenusBLL.Where(c => c.MenusStatus == ((int)Enums.EStatus.normal == 0 ? false : true)).OrderBy(c=>c.MenusSortId).ToList();
             //base.MenusBLL.DbSet.Where(c => c.MenusStatus == ((int)Enums.EStatus.normal == 0 ? false : true)).OrderBy(c => c.MenusSortId).ToList();
             return PartialView();
         }
+
         public ActionResult Content()
         {
-
             return PartialView();
         }
     }

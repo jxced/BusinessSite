@@ -4,17 +4,14 @@ using IDAL;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class BaseBLL<TEntity>:IBaseBLL<TEntity> where TEntity:class
+    public class BaseBLL<TEntity> : IBaseBLL<TEntity> where TEntity : class
     {
         protected IBaseDAL<TEntity> dal = DFactory<TEntity>.Create();
-        public DbSet<TEntity> DbSet { get =>dal.DbSet; }
+        public DbSet<TEntity> DbSet { get => dal.DbSet; }
 
         /// <summary>
         /// 查询表所有数据
@@ -63,8 +60,9 @@ namespace BLL
         /// <returns></returns>
         public int Update(TEntity entity, string[] fields)
         {
-           return dal.Update(entity, fields);
+            return dal.Update(entity, fields);
         }
+
         /// <summary>
         /// 删除
         /// </summary>

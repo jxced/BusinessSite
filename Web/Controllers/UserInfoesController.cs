@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using Entity;
 
 namespace Web.Controllers
 {
@@ -42,7 +37,7 @@ namespace Web.Controllers
         }
 
         // POST: UserInfoes/Create
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
+        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -74,7 +69,7 @@ namespace Web.Controllers
         }
 
         // POST: UserInfoes/Edit/5
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
+        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]

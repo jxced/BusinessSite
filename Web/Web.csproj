@@ -409,7 +409,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\CheckLogin\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-using System.Web.Mvc;
-using AbsFactory;
+﻿using AbsFactory;
 using IBLL;
-using System.Data.Entity;
+using System.Web.Mvc;
 
 namespace Web.Areas.Admin.Controllers
 {
-    public class BaseController:Controller
+    public class BaseController : Controller
     {
-        AFactory aFactory = AFactory.CreateBLLFactory();
+        private AFactory aFactory = AFactory.CreateBLLFactory();
 
         public BaseController(/*ICategoryBLL categoryBLL, IContentsBLL contentsBLL, IFeedbackBLL feedbackBLL, IMenusBLL menusBLL, INewsBLL newsBLL, IProductsBLL productsBLL, IUserInfoBLL userInfoBLL*/)
         {
             CategoryBLL = aFactory.CreateCtegoryBLLInstance();
-            ContentsBLL =aFactory.CreateContentsBLLInstance();
+            ContentsBLL = aFactory.CreateContentsBLLInstance();
             FeedbackBLL = aFactory.CreateFeedbackBLLInstance();
             MenusBLL = aFactory.CreateMenusBLLInstance();
             NewsBLL = aFactory.CreateNewsBLLInstance();
@@ -32,6 +26,5 @@ namespace Web.Areas.Admin.Controllers
         public INewsBLL NewsBLL { get; set; }
         public IProductsBLL ProductsBLL { get; set; }
         public IUserInfoBLL UserInfoBLL { get; set; }
-
     }
 }
