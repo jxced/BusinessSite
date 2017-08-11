@@ -357,6 +357,7 @@
     <Content Include="html\template\assets\fonts\FontAwesome.otf" />
     <Content Include="Areas\Admin\Views\Dashboard\Content.cshtml" />
     <Content Include="Areas\Admin\Views\Account\LoginOut.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\html5shiv-printshiv.js" />
     <Content Include="Scripts\html5shiv-printshiv.min.js" />

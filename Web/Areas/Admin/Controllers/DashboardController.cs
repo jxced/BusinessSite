@@ -27,7 +27,7 @@ namespace Web.Areas.Admin.Controllers
         }
         public ActionResult Category()
         {
-            return 
+            return PartialView();
         }
     }
 }
