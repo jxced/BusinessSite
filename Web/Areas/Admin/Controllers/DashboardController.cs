@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using CommonLib;
+using Entity.ModelViews;
 
 namespace Web.Areas.Admin.Controllers
 {
@@ -10,8 +12,10 @@ namespace Web.Areas.Admin.Controllers
         // GET: Admin/Dashboard
         public ActionResult Index()
         {
-            List<Menus> menus = base.MenusBLL.Where(c => c.MenusStatus == ((int)Enums.EStatus.normal == 0 ? false : true)).OrderBy(c => c.MenusSortId).ToList();
-            return View(menus);
+           List<Category>categoryList = base.CategoryBLL.Where().ToList();
+           ViewData["category"]=AutoEntityMap<Category, CategoryView>.EntityMap(categoryList);
+           List<Menus> menus = base.MenusBLL.Where(c => c.MenusStatus == ((int)Enums.EStatus.normal == 0 ? false : true)).OrderBy(c => c.MenusSortId).ToList();
+           return View(menus);
         }
 
         public ActionResult Menus()

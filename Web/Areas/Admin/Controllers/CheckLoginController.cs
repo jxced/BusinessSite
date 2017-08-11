@@ -17,7 +17,7 @@ namespace Web.Areas.Admin.Controllers
             {
                 if (Session[Keys.SessionKey] == null)
                 {
-                    filterContext.Result = new RedirectResult("/Admin/Account/Login");
+                    //filterContext.Result = new RedirectResult("/Admin/Account/Login");
                 }
                 
             }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Collections.Generic;
 
 namespace CommonLib
 {
@@ -23,5 +24,26 @@ namespace CommonLib
             });
             return Mapper.Map<TEntity>(entityView);
         }
+
+        public static  List<TEntityView> EntityMap(List<TEntity>entity)
+        {
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddConditionalObjectMapper();
+                // Configuration code
+            });
+            return Mapper.Map<List<TEntityView>>(entity);
+        }
+
+        public static List<TEntity> EntityMap(List<TEntityView> entityView)
+        {
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddConditionalObjectMapper();
+                // Configuration code
+            });
+            return Mapper.Map<List<TEntity>>(entityView);
+        }
     }
+    
 }

@@ -1,5 +1,5 @@
 ﻿@model  IEnumerable<Entity.Menus>
-
+@using Entity.ModelViews
 @{
     ViewBag.Title = "后台管理";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -10,6 +10,6 @@
 @* 内容 *@
     <div class="admin-content">
         <div class="admin-content-body">
-            @Html.Partial("Content")
+            @Html.Partial("Category",ViewData["category"] as List<CategoryView>)
         </div>
     </div>
