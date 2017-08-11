@@ -14,15 +14,16 @@ namespace Web.Areas.Admin.Controllers
         {
            List<Category>categoryList = base.CategoryBLL.Where().ToList();
            ViewData["category"]=AutoEntityMap<Category, CategoryView>.EntityMap(categoryList);
-           List<Menus> menus = base.MenusBLL.Where(c => c.MenusStatus == ((int)Enums.EStatus.normal == 0 ? false : true)).OrderBy(c => c.MenusSortId).ToList();
-           return View(menus);
+           
+           return View();
         }
 
         public ActionResult Menus()
         {
+            List<Menus> menus = base.MenusBLL.Where(c => c.MenusStatus == ((int)Enums.EStatus.normal == 0 ? false : true)).OrderBy(c => c.MenusSortId).ToList();
             // List<Menus> menus= base.MenusBLL.Where(c => c.MenusStatus == ((int)Enums.EStatus.normal == 0 ? false : true)).OrderBy(c=>c.MenusSortId).ToList();
             //base.MenusBLL.DbSet.Where(c => c.MenusStatus == ((int)Enums.EStatus.normal == 0 ? false : true)).OrderBy(c => c.MenusSortId).ToList();
-            return PartialView();
+            return PartialView(menus);
         }
 
         public ActionResult Content()
