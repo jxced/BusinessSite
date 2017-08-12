@@ -16,9 +16,15 @@ namespace Entity.ModelViews
     using System.ComponentModel.DataAnnotations;
     public partial class CategoryView
     {
+        [DisplayName("类别ID")]
         public int CategoryId { get; set; }
+        [DisplayName("类别类型")]
+        public string CategoryType { get; set; }
+
         public int CategoryTypeId { get; set; }
+        [DisplayName("类别标题")]
         public string CategroyTitle { get; set; }
+        [DisplayName("父分类ID")]
         public int ParentId { get; set; }
     }
 }

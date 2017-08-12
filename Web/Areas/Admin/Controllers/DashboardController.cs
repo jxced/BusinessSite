@@ -32,7 +32,8 @@ namespace Web.Areas.Admin.Controllers
         }
         public ActionResult Category()
         {
-            return PartialView();
+            List<CategoryView> categoryList = AutoEntityMap<Category, CategoryView>.EntityMap(base.CategoryBLL.Where().ToList());
+            return PartialView(categoryList);
         }
     }
 }
