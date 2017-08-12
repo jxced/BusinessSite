@@ -35,5 +35,15 @@ namespace Web.Areas.Admin.Controllers
             List<CategoryView> categoryList = AutoEntityMap<Category, CategoryView>.EntityMap(base.CategoryBLL.Where().ToList());
             return PartialView(categoryList);
         }
+        public ActionResult Category_Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Category_Create(CategoryView entity)
+        {
+            return View();
+        }
     }
 }
