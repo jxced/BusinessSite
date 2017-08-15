@@ -4,7 +4,8 @@ using System.Text.RegularExpressions;
 
 namespace CommonLib
 {
-    public class Kits
+    using System.Web.Mvc;
+    public  class Kits
     {
         /// <summary>
         /// /MD5加密
@@ -26,6 +27,11 @@ namespace CommonLib
             return sb.ToString().Replace("-", "");
         }
 
+        /// <summary>
+        /// 接口数据转Json
+        /// </summary>
+        /// <param name="postValue"></param>
+        /// <returns></returns>
         public static string GetJsonByPostValue(string postValue)
         {
             Regex rx = new Regex("=(?!\"|{|\\[|&)");
@@ -42,6 +48,9 @@ namespace CommonLib
 
             return requestContent;
         }
+        public static  MvcHtmlString PaperHelper(this HtmlHelper htmler,  )
+        {
 
+        }
     }
 }
