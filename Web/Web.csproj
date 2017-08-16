@@ -360,6 +360,10 @@
     <Content Include="Areas\Admin\Views\Account\LoginOut.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Category.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Category_Create.cshtml" />
+    <None Include="Dockerfile" />
+    <None Include=".dockerignore">
+      <DependentUpon>Dockerfile</DependentUpon>
+    </None>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\html5shiv-printshiv.js" />

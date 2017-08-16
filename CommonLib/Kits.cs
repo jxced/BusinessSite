@@ -60,7 +60,7 @@ namespace CommonLib
         /// <returns></returns>
         public static  MvcHtmlString PaperHelper(this HtmlHelper htmler,string area,string action,string controller,string pagerSize )
         {
-            StringBuilder html = new StringBuilder();
+            StringBuilder html = new StringBuilder(200);
             html.Append("<div class=\"am - cf\">");
             html.Append("<div class=\"am - fr\">");
             html.Append("<ul class=\"am-pagination\">");

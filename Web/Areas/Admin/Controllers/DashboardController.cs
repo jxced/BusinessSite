@@ -37,13 +37,13 @@ namespace Web.Areas.Admin.Controllers
         }
         public ActionResult Category_Create()
         {
-            return View();
+            return PartialView();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Category_Create(CategoryView entity)
         {
-            return View();
+            return PartialView();
         }
     }
 }
