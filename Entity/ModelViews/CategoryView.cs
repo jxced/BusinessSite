@@ -20,7 +20,6 @@ namespace Entity.ModelViews
         public int CategoryId { get; set; }
         [DisplayName("类别类型")]
         public string CategoryType { get; set; }
-
         public int CategoryTypeId { get; set; }
         [DisplayName("类别标题")]
         public string CategroyTitle { get; set; }

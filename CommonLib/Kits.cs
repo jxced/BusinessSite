@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 namespace CommonLib
 {
     using System.Web.Mvc;
-    public  class Kits
+    public static class Kits
     {
         /// <summary>
         /// /MD5加密
@@ -15,7 +15,7 @@ namespace CommonLib
         public static string GetMD5(string sourceStr)
         {
             StringBuilder sb = new StringBuilder();
-            using (MD5 md5 = System.Security.Cryptography.MD5.Create())
+            using (MD5 md5 = MD5.Create())
             {
                 byte[] data = md5.ComputeHash(Encoding.UTF8.GetBytes(sourceStr));
 
@@ -48,9 +48,26 @@ namespace CommonLib
 
             return requestContent;
         }
-        public static  MvcHtmlString PaperHelper(this HtmlHelper htmler, )
-        {
 
+        /// <summary>
+        /// 分页
+        /// </summary>
+        /// <param name="htmler"></param>
+        /// <param name="area"></param>
+        /// <param name="action"></param>
+        /// <param name="controller"></param>
+        /// <param name="pagerSize"></param>
+        /// <returns></returns>
+        public static  MvcHtmlString PaperHelper(this HtmlHelper htmler,string area,string action,string controller,string pagerSize )
+        {
+            StringBuilder html = new StringBuilder();
+            html.Append("<div class=\"am - cf\">");
+            html.Append("<div class=\"am - fr\">");
+            html.Append("<ul class=\"am-pagination\">");
+            html.Append("<li class=\"am-disabled\"><a href = \"#\" >«</a></li>");
+            html.Append("<li class=\"am-disabled\"><a href = \"#\" >»</a></li>");
+            html.Append("</ul></div></div>");
+            return new MvcHtmlString (html.ToString());
         }
     }
 }

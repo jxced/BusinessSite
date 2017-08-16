@@ -3,6 +3,7 @@
     ViewBag.Title = "Category";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+@using CommonLib;
 <div class="am-cf am-padding">
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">分类</strong> / <small>一些常用模块</small></div>
 </div>
@@ -71,7 +72,8 @@
                 </tbody>
             </table>
             <!--分页开始-->
-            <div class="am-cf">
+            @Html.PaperHelper("Admin","Category","Dashboard","2")
+            @*<div class="am-cf">
                 共 @Model.Count() 条记录
                 <div class="am-fr">
                     <ul class="am-pagination">
@@ -84,7 +86,7 @@
                         <li><a href="#">»</a></li>
                     </ul>
                 </div>
-            </div>
+            </div>*@
             <!--分页结束-->
             <p>注：.....</p>
         </form>
