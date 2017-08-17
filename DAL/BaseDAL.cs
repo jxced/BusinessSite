@@ -10,8 +10,20 @@ namespace DAL
 {
     public class BaseDAL<TEntity> : IBaseDAL<TEntity> where TEntity : class
     {
-        private BaseDBContext db = new BaseDBContext();
+        //private BaseDBContext db = new BaseDBContext();
         private DbSet<TEntity> _dbSet;
+        private BaseDBContext db {
+            get {
+              object efContext=  System.Runtime.Remoting.Messaging.CallContext.GetData(typeof(BaseDBContext).FullName);
+                if (efContext == null)
+                {
+                    BaseDBContext _db = new BaseDBContext();
+                    //System.Runtime.Remoting.Messaging.CallContext.SetData(typeof(BaseDBContext).FullName, _db);
+                    efContext = _db;
+                }
+                return efContext as BaseDBContext ;
+            }
+        }
 
         public BaseDAL()
         {

@@ -26,7 +26,7 @@ namespace AbsFactory
 
         public abstract IUserInfoBLL CreateUserInfoBLLInstance();
 
-        #region 泛型无法反射
+        #region 泛型无法反射?
 
         ////string fullName = spanName + ".Factory<" + typeof(TEntity) + ">";//`1[System.Int32]
         //string fullName = spanName + ".Fctory`1[" + entityType + "]";
