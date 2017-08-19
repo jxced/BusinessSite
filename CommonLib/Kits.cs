@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace CommonLib
 {
+    using System.Web;
     using System.Web.Mvc;
     public static class Kits
     {
@@ -58,14 +59,22 @@ namespace CommonLib
         /// <param name="controller"></param>
         /// <param name="pagerSize"></param>
         /// <returns></returns>
-        public static  MvcHtmlString PaperHelper(this HtmlHelper htmler,string area,string action,string controller,string pagerSize )
+        public static  MvcHtmlString PaperHelper(this HtmlHelper htmler,string area,string action,string controller,string pagerSize,int total )
         {
+            string currentIndex= HttpContext.Current.Request.QueryString["currentpager"]==null?"1": HttpContext.Current.Request.QueryString["currentpager"];
+            int totalcount= (int)System.Math.Ceiling((decimal)total / int.Parse(pagerSize));
+            area = area == null ? "" : "/" + area;
+            string url = area + "/" + controller + "/" + action + "?currentpager={0}&pagerSize={1}";
             StringBuilder html = new StringBuilder(200);
             html.Append("<div class=\"am - cf\">");
             html.Append("<div class=\"am - fr\">");
             html.Append("<ul class=\"am-pagination\">");
-            html.Append("<li class=\"am-disabled\"><a href = \"#\" >«</a></li>");
-            html.Append("<li class=\"am-disabled\"><a href = \"#\" >»</a></li>");
+            html.Append("<li ><a href = \""+string.Format(url, int.Parse(currentIndex)==1?1: int.Parse(currentIndex)-1, pagerSize) +"\" >«</a></li>");
+            for (int i = 1; i <= totalcount; i++)
+            {
+                html.Append("<li><a href = \"" + string.Format(url, i, pagerSize) + "\" >"+i+"</a></li>");
+            }
+            html.Append("<li ><a href = \"" + string.Format(url, int.Parse(currentIndex) == totalcount ?totalcount : int.Parse(currentIndex) + 1, pagerSize) +"\" >»</a></li>");
             html.Append("</ul></div></div>");
             return new MvcHtmlString (html.ToString());
         }

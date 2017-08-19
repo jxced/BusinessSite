@@ -71,8 +71,11 @@
                     }
                 </tbody>
             </table>
+            <hr />
+            <hr />
+            <hr />
             <!--分页开始-->
-            @Html.PaperHelper("Admin","Category","Dashboard","2")
+            @Html.PaperHelper("Admin","Category","Dashboard","2",(int)ViewBag.total)
             @*<div class="am-cf">
                 共 @Model.Count() 条记录
                 <div class="am-fr">

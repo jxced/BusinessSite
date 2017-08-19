@@ -32,7 +32,11 @@ namespace Web.Areas.Admin.Controllers
         }
         public ActionResult Category()
         {
-            List<CategoryView> categoryList = AutoEntityMap<Category, CategoryView>.EntityMap(base.CategoryBLL.Where().ToList());
+            int currentpager= Request.QueryString["currentpager"]==null?1: int.Parse(Request.QueryString["currentpager"]);
+            int count =Request.QueryString["pagerSize"]==null?2: int.Parse(Request.QueryString["pagerSize"]);
+            ViewBag.total = base.CategoryBLL.Where().Count();
+            int skipsize = (currentpager - 1) * count;
+            List<CategoryView> categoryList = AutoEntityMap<Category, CategoryView>.EntityMap(base.CategoryBLL.Where().Skip(skipsize).Take(count).ToList());
             return PartialView(categoryList);
         }
         public ActionResult Category_Create()
