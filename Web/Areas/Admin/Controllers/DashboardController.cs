@@ -14,7 +14,8 @@ namespace Web.Areas.Admin.Controllers
         {
            List<Category>categoryList = base.CategoryBLL.Where().ToList();
            ViewData["category"]=AutoEntityMap<Category, CategoryView>.EntityMap(categoryList);
-            ViewData["total"] = base.CategoryBLL.Where().Count();
+            TempData["total"] = base.CategoryBLL.Where().Count();
+            ViewData["total"]= base.CategoryBLL.Where().Count();
             return View();
         }
 
@@ -35,7 +36,7 @@ namespace Web.Areas.Admin.Controllers
             int currentpager= Request.QueryString["currentpager"]==null?1: int.Parse(Request.QueryString["currentpager"]);
             int count =Request.QueryString["pagerSize"]==null?2: int.Parse(Request.QueryString["pagerSize"]);
             //ViewBag.total = base.CategoryBLL.Where().Count();
-            ViewData["total"] = base.CategoryBLL.Where().Count();
+            TempData["total"] = base.CategoryBLL.Where().Count();
             int skipsize = (currentpager - 1) * count;
             List<CategoryView> categoryList = AutoEntityMap<Category, CategoryView>.EntityMap(base.CategoryBLL.Where().Skip(skipsize).Take(count).ToList());
             return PartialView(categoryList);
@@ -48,6 +49,12 @@ namespace Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Category_Create(CategoryView entity)
         {
+            if (ModelState.IsValid)
+            {
+                base.CategoryBLL.Add(AutoEntityMap<CategoryView, Category>.EntityMap(entity));
+                base.CategoryBLL.SaveChanges();
+                return RedirectToAction("Category");
+            }
             return PartialView();
         }
     }

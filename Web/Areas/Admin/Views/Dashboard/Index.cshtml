@@ -8,7 +8,6 @@
 @* 内容 *@
     <div class="admin-content">
         <div class="admin-content-body">
-            @{int n = (int)ViewData["total"]; }
-            @Html.Partial("Category",ViewData["category"] as List<CategoryView>, ViewData["total"] as ViewDataDictionary)
+            @Html.Partial("Category", ViewData["category"] as List<CategoryView>, new ViewDataDictionary(TempData["total"]))
         </div>
     </div>
