@@ -44,9 +44,9 @@
                 <thead>
                     <tr>
                         <th class="table-check"><input type="checkbox" /></th>
-                        <th class="table-id">@Html.DisplayNameFor(c=>c.CategoryId)</th>
-                        <th class="table-title">@Html.DisplayNameFor(c=>c.CategroyTitle)</th>
-                        <th class="table-type">@Html.DisplayNameFor(c=>c.CategoryType)</th>
+                        <th class="table-id">@Html.DisplayNameFor(c => c.CategoryId)</th>
+                        <th class="table-title">@Html.DisplayNameFor(c => c.CategroyTitle)</th>
+                        <th class="table-type">@Html.DisplayNameFor(c => c.CategoryType)</th>
                         <th class="table-set">操作</th>
                     </tr>
                 </thead>
@@ -75,7 +75,8 @@
             <hr />
             <hr />
             <!--分页开始-->
-            @Html.PaperHelper("Admin","Category","Dashboard","2",(int)ViewBag.total)
+            @{int n = (int)ViewData["total"]; }
+            @Html.PaperHelper("Admin","Category","Dashboard","2",(int)ViewData["total"])
             @*<div class="am-cf">
                 共 @Model.Count() 条记录
                 <div class="am-fr">
