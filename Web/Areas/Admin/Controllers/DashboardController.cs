@@ -45,8 +45,8 @@ namespace Web.Areas.Admin.Controllers
         {
             return PartialView();
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+
+        [HttpPost,ValidateAntiForgeryToken]
         public ActionResult Category_Create(CategoryView entity)
         {
             if (ModelState.IsValid)
@@ -56,6 +56,11 @@ namespace Web.Areas.Admin.Controllers
                 return RedirectToAction("Category");
             }
             return PartialView();
+        }
+
+        public ActionResult News()
+        {
+            return View();
         }
     }
 }
