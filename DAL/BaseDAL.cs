@@ -18,7 +18,7 @@ namespace DAL
                 if (efContext == null)
                 {
                     BaseDBContext _db = new BaseDBContext();
-                    //System.Runtime.Remoting.Messaging.CallContext.SetData(typeof(BaseDBContext).FullName, _db);
+                    System.Runtime.Remoting.Messaging.CallContext.SetData(typeof(BaseDBContext).FullName, _db);
                     efContext = _db;
                 }
                 return efContext as BaseDBContext ;

@@ -67,11 +67,6 @@
     <Compile Include="Feedback.cs">
       <DependentUpon>KyModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="KyModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KyModel.Context.tt</DependentUpon>
-    </Compile>
     <Compile Include="KyModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
