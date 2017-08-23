@@ -16,16 +16,26 @@ namespace Entity.ModelViews
     using System.ComponentModel.DataAnnotations;
     public partial class NewsView
     {
+        [DisplayName("ID")]
         public int Id { get; set; }
+        [DisplayName("分类名称")]
         public int CategoryId { get; set; }
+        [DisplayName("管理员")]
         public int UserId { get; set; }
+        [DisplayName("标题")]
         public string Title { get; set; }
+        [DisplayName("作者")]
         public string Author { get; set; }
+        [DisplayName("来源")]
         public string Form { get; set; }
+        [DisplayName("正文")]
         public string Content { get; set; }
         public int SortId { get; set; }
+        [DisplayName("点击数")]
         public Nullable<int> Clicks { get; set; }
+        [DisplayName("审核")]
         public bool IsLock { get; set; }
+        [DisplayName("加入时间")]
         public System.DateTime AddTime { get; set; }
     }
 }

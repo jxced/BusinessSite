@@ -78,5 +78,12 @@ namespace CommonLib
             html.Append("</ul></div></div>");
             return new MvcHtmlString (html.ToString());
         }
+
+        public static MvcHtmlString test(this HtmlHelper htmler)
+        {
+            StringBuilder s = new StringBuilder(200);
+            s.Append("<span class=\"am - icon - pencil - square - o\"></span> 编辑");
+            return new MvcHtmlString(s.ToString());
+        }
     }
 }

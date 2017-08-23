@@ -58,9 +58,46 @@ namespace Web.Areas.Admin.Controllers
             return PartialView();
         }
 
+        /// <summary>
+        /// 新闻列表
+        /// </summary>
+        /// <returns></returns>
         public ActionResult News()
         {
-            return View();
+           List<Category>categoryList=base.CategoryBLL.Where().ToList();
+            ViewBag.list= categoryList.Select(c => new { id = c.CategoryId, name = c.CategroyTitle });
+            List<NewsView>newsList= AutoEntityMap<News,NewsView>.EntityMap(base.NewsBLL.Where().ToList());
+            return View(newsList);
+        }
+
+        public ActionResult News_Edit(int id)
+        {
+            var entity = base.NewsBLL.Where(c => c.Id == id).FirstOrDefault();
+            GetIist();
+            return View(entity);
+        }
+
+        private void GetIist()
+        {
+            List<Category> categoryList = base.CategoryBLL.Where().ToList();
+            ViewBag.list = categoryList.Select(c => new { id = c.CategoryId, name = c.CategroyTitle });
+        }
+
+        [HttpPost,ValidateAntiForgeryToken]
+        public  ActionResult News_Edit(int id, News entity)
+        {
+            if (ModelState.IsValid)
+            {
+
+                GetIist();
+                return View();
+
+            }
+            var model = base.NewsBLL.Where(c => c.Id == entity.Id).FirstOrDefault();
+            model.Author = entity.Author;
+            model.CategoryId = entity.CategoryId;
+            base.NewsBLL.SaveChanges();
+            return RedirectToAction("News");
         }
     }
 }

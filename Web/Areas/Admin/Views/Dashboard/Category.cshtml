@@ -61,9 +61,9 @@
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                                        <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 复制</button>
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                                        <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="@Url.Action("Category_edit","Dashboard",new {id=item.CategoryId})"><span class="am-icon-pencil-square-o"></span> 编辑</a>
+                                        <a class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 复制</a>
+                                        <a class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</a>
                                     </div>
                                 </div>
                             </td>
@@ -76,20 +76,6 @@
             <hr />
             <!--分页开始-->
             @Html.PaperHelper("Admin","Category","Dashboard","2", (int)TempData["total"])
-            @*<div class="am-cf">
-                共 @Model.Count() 条记录
-                <div class="am-fr">
-                    <ul class="am-pagination">
-                        <li class="am-disabled"><a href="#">«</a></li>
-                        <li class="am-active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">»</a></li>
-                    </ul>
-                </div>
-            </div>*@
             <!--分页结束-->
             <p>注：.....</p>
         </form>

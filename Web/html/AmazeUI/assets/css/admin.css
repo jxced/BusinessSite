@@ -323,7 +323,7 @@ ul {
 }
 
 .table-id {
-  width: 50px;
+  min-width: 50px;
 }
 
 @media only screen and (max-width: 640px) {
