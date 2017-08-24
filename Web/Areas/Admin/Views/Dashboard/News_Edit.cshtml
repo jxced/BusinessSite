@@ -12,7 +12,7 @@
 </div>
 
 <hr>
-<form action="/Admin/Dashboard/News_Edit/@Model.Id" method="post" class="am-form am-form-inline">
+<form action="/Admin/Dashboard/News_Edit" method="post" class="am-form am-form-inline">
     @Html.AntiForgeryToken()
     <div class="am-tabs am-margin" data-am-tabs>
         <ul class="am-tabs-nav am-nav am-nav-tabs">
@@ -20,7 +20,7 @@
             <li><a href="#tab2">详细描述</a></li>
             <li><a href="#tab3">SEO 选项</a></li>
         </ul>
-        
+        @Html.HiddenFor(Model=>Model.Id)
         <div class="am-tabs-bd">
             <div class="am-tab-panel am-fade am-in am-active" id="tab1">
                 <div class="am-g am-margin-top">
@@ -36,10 +36,10 @@
                         <div class="am-btn-group" data-am-button>
 
                             <label class="am-btn am-btn-default am-btn-xs">
-                                @Html.RadioButtonFor(Model => Model.IsLock, 0, new { name = "IsLock" })正常
+                                正常 @Html.RadioButton("IsLock",0,Model.IsLock==false?true:false)
                             </label>
                             <label class="am-btn am-btn-default am-btn-xs">
-                                @Html.RadioButtonFor(Model => Model.IsLock, 1, new { name = "IsLock" })待审核
+                                待审核 @Html.RadioButton("IsLock", 1, Model.IsLock == true ? true : false)
                             </label>
                             @Html.ValidationMessageFor(Model => Model.IsLock)
                         </div>

@@ -92,6 +92,7 @@ namespace Web.Areas.Admin.Controllers
                 var model = base.NewsBLL.Where(c => c.Id == entity.Id).FirstOrDefault();
                 model.Author = entity.Author;
                 model.CategoryId = entity.CategoryId;
+                model.IsLock = entity.IsLock;
                 base.NewsBLL.SaveChanges();
                 GetIist();
                 return RedirectToAction("News");
