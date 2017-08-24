@@ -1,4 +1,4 @@
-﻿@model Entity.News
+﻿@model Entity.ModelViews.NewsView
 
 @{
     ViewBag.Title = "News_Edit";
@@ -12,7 +12,7 @@
 </div>
 
 <hr>
-<form action="/Admin/Dashboard/News_Edit" method="post" class="am-form am-form-inline">
+<form action="/Admin/Dashboard/News_Edit/@Model.Id" method="post" class="am-form am-form-inline">
     @Html.AntiForgeryToken()
     <div class="am-tabs am-margin" data-am-tabs>
         <ul class="am-tabs-nav am-nav am-nav-tabs">
@@ -20,7 +20,7 @@
             <li><a href="#tab2">详细描述</a></li>
             <li><a href="#tab3">SEO 选项</a></li>
         </ul>
-        @Html.HiddenFor(Model => Model.Id, new { name="id"})
+        
         <div class="am-tabs-bd">
             <div class="am-tab-panel am-fade am-in am-active" id="tab1">
                 <div class="am-g am-margin-top">
@@ -145,7 +145,7 @@
                         内容描述
                     </div>
                     <div class="am-u-sm-12 am-u-md-10">
-                        <textarea rows="15" placeholder="请使用富文本编辑插件">@Model.Content</textarea>
+                        @Html.TextAreaFor(Model => Model.Content,15,10, new { name= "Content" })
                     </div>
                 </div>
         </div>

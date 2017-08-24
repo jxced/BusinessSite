@@ -72,7 +72,7 @@ namespace Web.Areas.Admin.Controllers
 
         public ActionResult News_Edit(int id)
         {
-            var entity = base.NewsBLL.Where(c => c.Id == id).FirstOrDefault();
+            var  entity = AutoEntityMap<News, NewsView>.EntityMap(base.NewsBLL.Where(c => c.Id == id).FirstOrDefault());
             GetIist();
             return View(entity);
         }
@@ -83,21 +83,21 @@ namespace Web.Areas.Admin.Controllers
             ViewBag.list = categoryList.Select(c => new { id = c.CategoryId, name = c.CategroyTitle });
         }
 
-        [HttpPost,ValidateAntiForgeryToken]
-        public  ActionResult News_Edit(int id, News entity)
+        [HttpPost,ValidateAntiForgeryToken,ValidateInput(false)]
+        public  ActionResult News_Edit(int id, NewsView entity)
         {
+            ModelState.Remove("IsLock");
             if (ModelState.IsValid)
             {
-
+                var model = base.NewsBLL.Where(c => c.Id == entity.Id).FirstOrDefault();
+                model.Author = entity.Author;
+                model.CategoryId = entity.CategoryId;
+                base.NewsBLL.SaveChanges();
                 GetIist();
-                return View();
-
+                return RedirectToAction("News");
             }
-            var model = base.NewsBLL.Where(c => c.Id == entity.Id).FirstOrDefault();
-            model.Author = entity.Author;
-            model.CategoryId = entity.CategoryId;
-            base.NewsBLL.SaveChanges();
-            return RedirectToAction("News");
+            GetIist();
+            return View();
         }
     }
 }

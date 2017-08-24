@@ -18,11 +18,11 @@ namespace Entity.ModelViews
     {
         [DisplayName("ID")]
         public int Id { get; set; }
-        [DisplayName("分类名称")]
+        [DisplayName("分类名称"),Required(ErrorMessage ="分类名称不能为空")]
         public int CategoryId { get; set; }
         [DisplayName("管理员")]
         public int UserId { get; set; }
-        [DisplayName("标题")]
+        [DisplayName("标题"),Required(ErrorMessage = "标题不能为空")]
         public string Title { get; set; }
         [DisplayName("作者")]
         public string Author { get; set; }
@@ -33,7 +33,7 @@ namespace Entity.ModelViews
         public int SortId { get; set; }
         [DisplayName("点击数")]
         public Nullable<int> Clicks { get; set; }
-        [DisplayName("审核")]
+        [DisplayName("审核"),Required(ErrorMessage ="请选择显示或未审核")]
         public bool IsLock { get; set; }
         [DisplayName("加入时间")]
         public System.DateTime AddTime { get; set; }
