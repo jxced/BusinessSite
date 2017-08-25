@@ -28,12 +28,13 @@ namespace Entity.ModelViews
         public string Author { get; set; }
         [DisplayName("来源")]
         public string Form { get; set; }
-        [DisplayName("正文")]
+        [DisplayName("正文"),MinLength(20,ErrorMessage ="新闻字数不能低于20个字符")]
         public string Content { get; set; }
+        [DisplayName("序号")]
         public int SortId { get; set; }
         [DisplayName("点击数")]
         public Nullable<int> Clicks { get; set; }
-        [DisplayName("审核"),Required(ErrorMessage ="请选择显示或未审核")]
+        [DisplayName("审核"),Required(ErrorMessage ="请选择显示或禁用")]
         public bool IsLock { get; set; }
         [DisplayName("加入时间")]
         public System.DateTime AddTime { get; set; }

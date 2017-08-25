@@ -362,6 +362,7 @@
     <Content Include="Areas\Admin\Views\Dashboard\Category_Create.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\News.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\News_Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Products.cshtml" />
     <None Include="Dockerfile" />
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>

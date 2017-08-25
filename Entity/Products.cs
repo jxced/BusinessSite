@@ -24,5 +24,7 @@ namespace Entity
         public int Clicks { get; set; }
         public System.DateTime AddTime { get; set; }
         public bool IsLock { get; set; }
+    
+        public virtual Category Category { get; set; }
     }
 }

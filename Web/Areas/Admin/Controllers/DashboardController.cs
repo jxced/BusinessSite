@@ -118,5 +118,11 @@ namespace Web.Areas.Admin.Controllers
                 return View();
             }
         }
+
+        public ActionResult Products()
+        {
+            var list= base.ProductsBLL.Where(c => c.IsLock, new string[] {"Category"}).Select(c => AutoEntityMap<Products, ProductsView>.EntityMap(c));
+            return View(list);
+        }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="businessSiteModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="businessSiteModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -67,7 +67,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="100" />
@@ -107,6 +107,18 @@
           <Property Name="UserIsLock" Type="bit" Nullable="false" />
           <Property Name="UserAddTime" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
+        <Association Name="Products_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="businessSiteModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="businesssite" store:Type="Tables" />
           <EntitySet Name="Contents" EntityType="Self.Contents" Schema="businesssite" store:Type="Tables" />
@@ -115,12 +127,28 @@
           <EntitySet Name="News" EntityType="Self.News" Schema="businesssite" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="businesssite" store:Type="Tables" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="businesssite" store:Type="Tables" />
+          <AssociationSet Name="Products_Category" Association="Self.Products_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="businessSiteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="businessSiteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Category" EntityType="businessSiteModel.Category" />
+          <EntitySet Name="Contents" EntityType="businessSiteModel.Contents" />
+          <EntitySet Name="Feedback" EntityType="businessSiteModel.Feedback" />
+          <EntitySet Name="Menus" EntityType="businessSiteModel.Menus" />
+          <EntitySet Name="News" EntityType="businessSiteModel.News" />
+          <EntitySet Name="Products" EntityType="businessSiteModel.Products" />
+          <EntitySet Name="UserInfo" EntityType="businessSiteModel.UserInfo" />
+          <AssociationSet Name="Products_Category" Association="businessSiteModel.Products_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -129,6 +157,7 @@
           <Property Name="CategoryTypeId" Type="Int32" Nullable="false" />
           <Property Name="CategroyTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="businessSiteModel.Products_Category" FromRole="Category" ToRole="Products" />
         </EntityType>
         <EntityType Name="Contents">
           <Key>
@@ -168,11 +197,11 @@
           </Key>
           <Property Name="MenusId" Type="Int32" Nullable="false" />
           <Property Name="MenusParentId" Type="Int32" Nullable="false" />
-          <Property Name="MenusName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MenusUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MenusName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MenusUrl" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="MenusSortId" Type="Int32" Nullable="false" />
           <Property Name="MenusStatus" Type="Boolean" Nullable="false" />
-          <Property Name="MenusIco" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MenusIco" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="MenusLevel" Type="Int32" Nullable="false" />
           <Property Name="MenusRemark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="exp1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -183,7 +212,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -209,29 +238,33 @@
           <Property Name="Clicks" Type="Int32" Nullable="false" />
           <Property Name="AddTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IsLock" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="businessSiteModel.Products_Category" FromRole="Products" ToRole="Category" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserPwd" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserTelphone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserPwd" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RealName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserTelphone" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="UserIsLock" Type="Boolean" Nullable="false" />
           <Property Name="UserAddTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
-        <EntityContainer Name="businessSiteEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Category" EntityType="Self.Category" />
-          <EntitySet Name="Contents" EntityType="Self.Contents" />
-          <EntitySet Name="Feedback" EntityType="Self.Feedback" />
-          <EntitySet Name="Menus" EntityType="Self.Menus" />
-          <EntitySet Name="News" EntityType="Self.News" />
-          <EntitySet Name="Products" EntityType="Self.Products" />
-          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
-        </EntityContainer>
+        <Association Name="Products_Category">
+          <End Type="businessSiteModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="businessSiteModel.Products" Role="Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -241,109 +274,109 @@
           <EntitySetMapping Name="Category">
             <EntityTypeMapping TypeName="businessSiteModel.Category">
               <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="CategoryTypeId" ColumnName="CategoryTypeId" />
-                <ScalarProperty Name="CategroyTitle" ColumnName="CategroyTitle" />
                 <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="CategroyTitle" ColumnName="CategroyTitle" />
+                <ScalarProperty Name="CategoryTypeId" ColumnName="CategoryTypeId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Contents">
             <EntityTypeMapping TypeName="businessSiteModel.Contents">
               <MappingFragment StoreEntitySet="Contents">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
-                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="IsLock" ColumnName="IsLock" />
-                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-                <ScalarProperty Name="exp1" ColumnName="exp1" />
                 <ScalarProperty Name="exp2" ColumnName="exp2" />
+                <ScalarProperty Name="exp1" ColumnName="exp1" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="IsLock" ColumnName="IsLock" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Feedback">
             <EntityTypeMapping TypeName="businessSiteModel.Feedback">
               <MappingFragment StoreEntitySet="Feedback">
-                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
-                <ScalarProperty Name="FeedbackTitle" ColumnName="FeedbackTitle" />
-                <ScalarProperty Name="FeefbackContent" ColumnName="FeefbackContent" />
-                <ScalarProperty Name="FUserName" ColumnName="FUserName" />
-                <ScalarProperty Name="FUserTel" ColumnName="FUserTel" />
-                <ScalarProperty Name="FUserqq" ColumnName="FUserqq" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-                <ScalarProperty Name="Replies" ColumnName="Replies" />
-                <ScalarProperty Name="ReplyTime" ColumnName="ReplyTime" />
                 <ScalarProperty Name="IsLock" ColumnName="IsLock" />
+                <ScalarProperty Name="ReplyTime" ColumnName="ReplyTime" />
+                <ScalarProperty Name="Replies" ColumnName="Replies" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FUserqq" ColumnName="FUserqq" />
+                <ScalarProperty Name="FUserTel" ColumnName="FUserTel" />
+                <ScalarProperty Name="FUserName" ColumnName="FUserName" />
+                <ScalarProperty Name="FeefbackContent" ColumnName="FeefbackContent" />
+                <ScalarProperty Name="FeedbackTitle" ColumnName="FeedbackTitle" />
+                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Menus">
             <EntityTypeMapping TypeName="businessSiteModel.Menus">
               <MappingFragment StoreEntitySet="Menus">
-                <ScalarProperty Name="MenusId" ColumnName="MenusId" />
-                <ScalarProperty Name="MenusParentId" ColumnName="MenusParentId" />
-                <ScalarProperty Name="MenusName" ColumnName="MenusName" />
-                <ScalarProperty Name="MenusUrl" ColumnName="MenusUrl" />
-                <ScalarProperty Name="MenusSortId" ColumnName="MenusSortId" />
-                <ScalarProperty Name="MenusStatus" ColumnName="MenusStatus" />
-                <ScalarProperty Name="MenusIco" ColumnName="MenusIco" />
-                <ScalarProperty Name="MenusLevel" ColumnName="MenusLevel" />
-                <ScalarProperty Name="MenusRemark" ColumnName="MenusRemark" />
-                <ScalarProperty Name="exp1" ColumnName="exp1" />
-                <ScalarProperty Name="exp2" ColumnName="exp2" />
                 <ScalarProperty Name="MenusAddTime" ColumnName="MenusAddTime" />
+                <ScalarProperty Name="exp2" ColumnName="exp2" />
+                <ScalarProperty Name="exp1" ColumnName="exp1" />
+                <ScalarProperty Name="MenusRemark" ColumnName="MenusRemark" />
+                <ScalarProperty Name="MenusLevel" ColumnName="MenusLevel" />
+                <ScalarProperty Name="MenusIco" ColumnName="MenusIco" />
+                <ScalarProperty Name="MenusStatus" ColumnName="MenusStatus" />
+                <ScalarProperty Name="MenusSortId" ColumnName="MenusSortId" />
+                <ScalarProperty Name="MenusUrl" ColumnName="MenusUrl" />
+                <ScalarProperty Name="MenusName" ColumnName="MenusName" />
+                <ScalarProperty Name="MenusParentId" ColumnName="MenusParentId" />
+                <ScalarProperty Name="MenusId" ColumnName="MenusId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="News">
             <EntityTypeMapping TypeName="businessSiteModel.News">
               <MappingFragment StoreEntitySet="News">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Author" ColumnName="Author" />
-                <ScalarProperty Name="Form" ColumnName="Form" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="SortId" ColumnName="SortId" />
-                <ScalarProperty Name="Clicks" ColumnName="Clicks" />
-                <ScalarProperty Name="IsLock" ColumnName="IsLock" />
                 <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="IsLock" ColumnName="IsLock" />
+                <ScalarProperty Name="Clicks" ColumnName="Clicks" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Form" ColumnName="Form" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="businessSiteModel.Products">
               <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PhothId" ColumnName="PhothId" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="SortId" ColumnName="SortId" />
-                <ScalarProperty Name="Clicks" ColumnName="Clicks" />
-                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
                 <ScalarProperty Name="IsLock" ColumnName="IsLock" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="Clicks" ColumnName="Clicks" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="PhothId" ColumnName="PhothId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserInfo">
             <EntityTypeMapping TypeName="businessSiteModel.UserInfo">
               <MappingFragment StoreEntitySet="UserInfo">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
-                <ScalarProperty Name="RealName" ColumnName="RealName" />
-                <ScalarProperty Name="UserTelphone" ColumnName="UserTelphone" />
-                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
-                <ScalarProperty Name="UserIsLock" ColumnName="UserIsLock" />
                 <ScalarProperty Name="UserAddTime" ColumnName="UserAddTime" />
+                <ScalarProperty Name="UserIsLock" ColumnName="UserIsLock" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserTelphone" ColumnName="UserTelphone" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -14,9 +14,18 @@ namespace Entity
     
     public partial class Category
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Category()
+        {
+            this.Products = new HashSet<Products>();
+        }
+    
         public int CategoryId { get; set; }
         public int CategoryTypeId { get; set; }
         public string CategroyTitle { get; set; }
         public int ParentId { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Products> Products { get; set; }
     }
 }

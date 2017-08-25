@@ -4,14 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2c5ad80f932f4ff3a0a71128caae988d" Name="Diagram1">
-        <EntityTypeShape EntityType="businessSiteModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="businessSiteModel.Contents" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="businessSiteModel.Feedback" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="businessSiteModel.Menus" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="businessSiteModel.News" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="businessSiteModel.Products" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="businessSiteModel.UserInfo" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="2c5ad80f932f4ff3a0a71128caae988d" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="businessSiteModel.Category" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="businessSiteModel.Contents" Width="1.5" PointX="7.875" PointY="0.75" />
+        <EntityTypeShape EntityType="businessSiteModel.Feedback" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="businessSiteModel.Menus" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="businessSiteModel.News" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="businessSiteModel.Products" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="businessSiteModel.UserInfo" Width="1.5" PointX="10.125" PointY="0.875" />
+        <AssociationConnector Association="businessSiteModel.Products_Category" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
