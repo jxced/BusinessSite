@@ -34,12 +34,11 @@
                     <div class="am-u-sm-4 am-u-md-2 am-text-right">显示状态</div>
                     <div class="am-u-sm-8 am-u-md-10">
                         <div class="am-btn-group" data-am-button>
-
                             <label class="am-btn am-btn-default am-btn-xs">
-                                正常 @Html.RadioButton("IsLock",0,Model.IsLock==false?true:false)
+                                显示 @Html.RadioButton("IsLock", false,Model.IsLock==false?true:false)
                             </label>
                             <label class="am-btn am-btn-default am-btn-xs">
-                                待审核 @Html.RadioButton("IsLock", 1, Model.IsLock == true ? true : false)
+                                禁用  @Html.RadioButton("IsLock", true, Model.IsLock == true ? true : false)
                             </label>
                             @Html.ValidationMessageFor(Model => Model.IsLock)
                         </div>
