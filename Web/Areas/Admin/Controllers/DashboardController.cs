@@ -49,13 +49,22 @@ namespace Web.Areas.Admin.Controllers
         [HttpPost,ValidateAntiForgeryToken]
         public ActionResult Category_Create(CategoryView entity)
         {
-            if (ModelState.IsValid)
+            try
             {
-                base.CategoryBLL.Add(AutoEntityMap<CategoryView, Category>.EntityMap(entity));
-                base.CategoryBLL.SaveChanges();
-                return RedirectToAction("Category");
+                if (ModelState.IsValid)
+                {
+                    base.CategoryBLL.Add(AutoEntityMap<CategoryView, Category>.EntityMap(entity));
+                    base.CategoryBLL.SaveChanges();
+                    return RedirectToAction("Category");
+                }
+                return PartialView();
             }
-            return PartialView();
+            catch (System.Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return PartialView();
+            }
+            
         }
 
         /// <summary>
@@ -86,19 +95,28 @@ namespace Web.Areas.Admin.Controllers
         [HttpPost,ValidateAntiForgeryToken,ValidateInput(false)]
         public  ActionResult News_Edit(int id, NewsView entity)
         {
-            ModelState.Remove("IsLock");
-            if (ModelState.IsValid)
+            try
             {
-                var model = base.NewsBLL.Where(c => c.Id == entity.Id).FirstOrDefault();
-                model.Author = entity.Author;
-                model.CategoryId = entity.CategoryId;
-                model.IsLock = entity.IsLock;
-                base.NewsBLL.SaveChanges();
+                ModelState.Remove("IsLock");
+                if (ModelState.IsValid)
+                {
+                    var model = base.NewsBLL.Where(c => c.Id == entity.Id).FirstOrDefault();
+                    model.Author = entity.Author;
+                    model.CategoryId = entity.CategoryId;
+                    model.IsLock = entity.IsLock;
+                    base.NewsBLL.SaveChanges();
+                    GetIist();
+                    return RedirectToAction("News");
+                }
                 GetIist();
-                return RedirectToAction("News");
+                return View();
             }
-            GetIist();
-            return View();
+            catch (System.Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                GetIist();
+                return View();
+            }
         }
     }
 }
