@@ -17,14 +17,22 @@ namespace Entity.ModelViews
     public partial class ProductsView
     {
         public int Id { get; set; }
+        [DisplayName("编号")]
         public string PhothId { get; set; }
+        [DisplayName("标题"),Required(ErrorMessage ="标题不能为空")]
         public string Title { get; set; }
+        [DisplayName("分类")]
         public int CategoryId { get; set; }
+        [DisplayName("图片路径")]
         public string ImgUrl { get; set; }
+        [DisplayName("内容"),MinLength(20,ErrorMessage ="内容长度不能低于20个字符")]
         public string Content { get; set; }
+        
         public int SortId { get; set; }
+        [DisplayName("点击数")]
         public int Clicks { get; set; }
         public System.DateTime AddTime { get; set; }
         public bool IsLock { get; set; }
+        public virtual CategoryView Category { get; set; }
     }
 }

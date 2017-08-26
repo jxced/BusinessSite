@@ -121,7 +121,7 @@ namespace Web.Areas.Admin.Controllers
 
         public ActionResult Products()
         {
-            var list= base.ProductsBLL.Where(c => c.IsLock, new string[] {"Category"}).Select(c => AutoEntityMap<Products, ProductsView>.EntityMap(c));
+            var list= AutoEntityMap<Products,ProductsView>.EntityMap(base.ProductsBLL.Where().ToList());
             return View(list);
         }
     }
