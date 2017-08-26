@@ -29,10 +29,8 @@ namespace Web.Controllers
 
         public ActionResult Login()
         {
-            AFactory aFactory = AFactory.CreateBLLFactory();
-            IUserInfoBLL users = aFactory.CreateUserInfoBLLInstance();
-            UserInfo user = users.Where(c => c.UserName == "admin").FirstOrDefault();
-            return View(user);
+           
+            return View();
         }
 
         public ActionResult LoginOut()
