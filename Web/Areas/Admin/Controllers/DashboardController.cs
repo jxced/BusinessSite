@@ -31,8 +31,12 @@ namespace Web.Areas.Admin.Controllers
         {
             return PartialView();
         }
-        public ActionResult Category()
+        public ActionResult Category(int?isdelcallback)
         {
+            if (isdelcallback==1)
+            {
+                JavaScript("< Script > alert('删除成功！');</Script>");
+            }
             int currentpager= Request.QueryString["currentpager"]==null?1: int.Parse(Request.QueryString["currentpager"]);
             int count =Request.QueryString["pagerSize"]==null?2: int.Parse(Request.QueryString["pagerSize"]);
             //ViewBag.total = base.CategoryBLL.Where().Count();
@@ -41,10 +45,12 @@ namespace Web.Areas.Admin.Controllers
             List<CategoryView> categoryList = AutoEntityMap<Category, CategoryView>.EntityMap(base.CategoryBLL.Where().Skip(skipsize).Take(count).ToList());
             return PartialView(categoryList);
         }
+
+        [HttpGet]
         public ActionResult Category_Create()
         {
             return PartialView();
-        }
+        }//Category_Create for get end
 
         [HttpPost,ValidateAntiForgeryToken]
         public ActionResult Category_Create(CategoryView entity)
@@ -64,7 +70,21 @@ namespace Web.Areas.Admin.Controllers
                 ModelState.AddModelError("", ex.Message);
                 return PartialView();
             }
-            
+        }//Category_Create for post end
+
+        public ActionResult Category_Del(int?id)
+        {
+            try
+            {
+                var entity = base.CategoryBLL.Where(c => c.CategoryId == id).FirstOrDefault();
+                base.CategoryBLL.Del(entity, true);
+                base.CategoryBLL.SaveChanges();
+                return RedirectToAction("Category");
+            }
+            catch (System.Exception ex)
+            {
+                return Json(new { massage = ex.Message, status = "Error", data = new { } });
+            }
         }
 
         /// <summary>
@@ -123,6 +143,14 @@ namespace Web.Areas.Admin.Controllers
         {
             var list= AutoEntityMap<Products,ProductsView>.EntityMap(base.ProductsBLL.Where().ToList());
             return View(list);
+        }
+        public ActionResult Products_Del(int?id)
+        {
+            if (id==null)
+            {
+
+            }
+            return View();
         }
     }
 }

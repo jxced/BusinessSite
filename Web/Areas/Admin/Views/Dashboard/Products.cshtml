@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Entity.ModelViews.ProductsView>
+
 @{
     ViewBag.Title = "Products";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -42,7 +43,7 @@
         {
         <li>
             <a href="#">
-                <img class="am-img-thumbnail am-img-bdrs" src="@item.ImgUrl" alt="Dj.com" />
+                <img class="am-img-thumbnail am-img-bdrs" src="@item.ImgUrl" alt="暂无照片，点击上传by  Dj.com" />
             </a>
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">

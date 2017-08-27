@@ -63,7 +63,7 @@
                                     <div class="am-btn-group am-btn-group-xs">
                                         <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="@Url.Action("Category_edit","Dashboard",new {id=item.CategoryId})"><span class="am-icon-pencil-square-o"></span> 编辑</a>
                                         <a class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 复制</a>
-                                        <a class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</a>
+                                        <a class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" href="@Url.Action("Category_Del","Dashboard",new { id=item.CategoryId})"><span class="am-icon-trash-o"></span> 删除</a>
                                     </div>
                                 </div>
                             </td>
