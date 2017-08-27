@@ -59,12 +59,17 @@ namespace CommonLib
         /// <param name="controller"></param>
         /// <param name="pagerSize"></param>
         /// <returns></returns>
-        public static  MvcHtmlString PaperHelper(this HtmlHelper htmler,string area,string action,string controller,string pagerSize,int total )
+        public static  MvcHtmlString PaperHelper(this HtmlHelper htmler,string pagerSize,int total )
         {
+            string url= HttpContext.Current.Request.RawUrl;
             string currentIndex= HttpContext.Current.Request.QueryString["currentpager"]==null?"1": HttpContext.Current.Request.QueryString["currentpager"];
             int totalcount= (int)System.Math.Ceiling((decimal)total / int.Parse(pagerSize));
-            area = area == null ? "" : "/" + area;
-            string url = area + "/" + controller + "/" + action + "?currentpager={0}&pagerSize={1}";
+            //area = area == null ? "" : "/" + area;
+            if (url.IndexOf("?")>-1)
+            {
+                url= url.Substring(0, url.IndexOf("?") );
+            }
+           url = url + "?currentpager={0}&pagerSize={1}";
             StringBuilder html = new StringBuilder(200);
             html.Append("<div class=\"am - cf\">");
             html.Append("<div class=\"am - fr\">");
